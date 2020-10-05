@@ -1,0 +1,36 @@
+.list{
+    width: 340px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: gainsboro;
+    border-radius: 5px;
+}
+
+#edit{
+    margin-left: 10px;
+    cursor: pointer;
+    height: 30px;
+    width: 50px;
+    border-radius: 0;
+    background-color:lightsteelblue;
+    font-weight: bold;
+}
+
+#delete{
+    margin-left:5px;
+    cursor: pointer;
+    height: 30px;
+    width: 60px;
+    border-radius: 0;
+    background-color:lightsteelblue;
+    font-weight: bold;
+}
+
+#delete:hover{
+    background-color: orangered;
+}
+
+#edit:hover{
+   background-color:darkgreen;
+   color: white;
+}
