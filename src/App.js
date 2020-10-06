@@ -38,14 +38,14 @@ function App() {
     let tasks=localStorage.getItem("task_table");
      if(tasks==null)
      {
-       var work=[];
+       var todo=[];
       }
      else{
-          work=JSON.parse(tasks);
+          todo=JSON.parse(tasks);
          }
          
-     work.push({'Task':item.task,'Key':item.key});
-     localStorage.setItem("task_table",JSON.stringify(work));
+     todo.push({'Task':item.task,'Key':item.key});
+     localStorage.setItem("task_table",JSON.stringify(todo));
 
   }
 
@@ -59,12 +59,7 @@ function App() {
     function deleteFromStorage(key)
     {
       var m=[];
-        if(localStorage.getItem('task_table')===null){
-            m=[];
-        } else{
-            m= JSON.parse(localStorage.getItem('task_table'));
-        
-        }
+        m=getData();
       
         m= m.filter(function(m,index) {
             return m.Key!==key
@@ -78,13 +73,7 @@ function App() {
     {
 
       var m=[];
-      if(localStorage.getItem('task_table')===null){
-          m=[];
-      } else{
-          m= JSON.parse(localStorage.getItem('task_table'));
-      
-      }
-      
+      m=getData();      
       const updatedList= m.map(item =>{
         if(item.Key === key)
         {
@@ -98,21 +87,16 @@ function App() {
     {
       e.preventDefault();
       var val=document.getElementById('demo').value;
-      let x=window.$keyValue;
-      console.log(val,x);
-      const editedItem={ task:val,key:x};
+      let keyVal=window.$keyValue;
+      // console.log(val,keyVal);
+      const editedItem={ task:val,key:keyVal};
       //setTaskList([...taskList, item]);
-      console.log(editedItem);
+      // console.log(editedItem);
       inputRef.current.value=" ";
       
       var m=[];
-      if(localStorage.getItem('task_table')===null){
-          m=[];
-      } else{
-          m= JSON.parse(localStorage.getItem('task_table'));
-      
-      }
-      console.log(m);
+      m= getData();
+      //console.log(m);
       const updateList= m.map(item =>{
         if(item.Key ===editedItem.key)
         {
@@ -122,6 +106,18 @@ function App() {
 
       localStorage.setItem("task_table",JSON.stringify(m));
       window.location.reload();
+    }
+
+    function getData()
+    {
+      var todo=[];
+      if(localStorage.getItem('task_table')===null){
+          todo=[];
+      } else{
+          todo= JSON.parse(localStorage.getItem('task_table'));
+      
+      }
+      return todo;
     }
     
   return (
